@@ -5,7 +5,7 @@ const path = require('path');
 const config = {
   entry: {
     vendor: ['react-hot-loader/patch', 'webpack-dev-server/client', 'webpack/hot/only-dev-server', 'react-hot-loader'],
-    main: './src/index.js',
+    main: './src/index.jsx',
   },
   output: {
     path: path.resolve(__dirname, './public'),
