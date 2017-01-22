@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import Filter from './Filter.jsx';
+import { Provider } from 'react-redux';
+import { AppContainer as HotReloader } from 'react-hot-loader';
+
+import Filter from './Filter';
 import store from '../store';
 
 let todoId = 0;
@@ -124,12 +127,18 @@ TodoApp.propTypes = {
 
 const render = () => {
   ReactDOM.render(
-    <TodoApp
-      state={store.getState()}
-    />,
+    <HotReloader>
+      <Provider store={store}>
+        <TodoApp
+          state={store.getState()}
+        />
+      </Provider>
+    </HotReloader>,
     document.getElementById('root'),
   );
 };
+
+if (module.hot) module.hot.accept('./TodoApp', render);
 
 store.subscribe(render);
 render();
